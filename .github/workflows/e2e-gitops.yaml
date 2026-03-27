@@ -84,11 +84,11 @@ jobs:
            git config --global user.email "${{ secrets.GIT_EMAIL}}"
            git config --global user.name "${{ secrets.GIT_USERNAME}}"
  
-           
+
       - name: Update Deployment YAML
         run: |
           git pull
-          sed -i "s|image: choudharyaniruddhaudemy/super-mario-image:.*$|image: choudharyaniruddhaudemy/super-mario-image:${{ env.VERSION }}|" k8s-manifest/deployment.yaml
+          sed -i "s|image: docker.io/choudharyaniruddhaudemy/super-mario-image:.*|image: docker.io/choudharyaniruddhaudemy/super-mario-image:${{ env.VERSION }}|" k8s-manifest/deployment.yaml
           echo ${{ env.VERSION }} > version.txt
           CURRENT_VERSION=$(cat version.txt)
           git add k8s-manifest/deployment.yaml version.txt
