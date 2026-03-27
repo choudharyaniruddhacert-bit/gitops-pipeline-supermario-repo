@@ -87,7 +87,7 @@ jobs:
       - name: Update Deployment YAML
         run: |
           git pull
-          sed -i "s|image: choudharyaniruddhaudemy/super-mario-image:.*$|image: choudharyaniruddhaudemy/super-mario-image:${{ env.VERSION }}|" k8s-manifests/deployment.yaml
+          sed -i "s|image: choudharyaniruddhaudemy/super-mario-image:.*$|image: choudharyaniruddhaudemy/super-mario-image:${{ env.VERSION }}|" k8s-manifest/deployment.yaml
           echo ${{ env.VERSION }} > version.txt
           CURRENT_VERSION=$(cat version.txt)
           git add k8s-manifests/deployment.yaml version.txt
